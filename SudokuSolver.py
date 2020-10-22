@@ -182,32 +182,7 @@ def correct(candidate, index):
     # Check 3x3 quadrant
     row_number = start_row / 9  # Calculate row number
 
-    if row_number < 3 and start_column < 3:  # top left quadrant
-        start_quadrant = 0
-
-    if row_number < 3 and (3 <= start_column < 6):  # top middle quadrant
-        start_quadrant = 3
-
-    if row_number < 3 and start_column >= 6:  # top right quadrant
-        start_quadrant = 6
-
-    if (3 <= row_number < 6) and start_column < 3:  # mid left quadrant
-        start_quadrant = 27
-
-    if (3 <= row_number < 6) and (3 <= start_column < 6):  # mid mid quadrant
-        start_quadrant = 30
-
-    if (3 <= row_number < 6) and start_column >= 6:  # mid right quadrant
-        start_quadrant = 33
-
-    if row_number >= 6 and start_column < 3:  # bottom left quadrant
-        start_quadrant = 54
-
-    if row_number >= 6 and (3 <= start_column < 6):  # bottom mid quadrant
-        start_quadrant = 57
-
-    if row_number >= 6 and start_column >= 6:  # bottom right quadrant
-        start_quadrant = 60
+    start_quadrant = int(((row_number // 3 * 3) * 9) + ((start_column // 3) * 3))
 
     return check_quadrant(start_quadrant, candidate, index, check_val)
 
